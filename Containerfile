@@ -1,4 +1,7 @@
-FROM quay.io/fedora/fedora-bootc:41@sha256:cc748b9d292ac05947fcf48ab9a44c467e4f9dc3e68837ad44a1d558cdd30a3f
+ARG BASE_IMAGE="quay.io/fedora/fedora-bootc"
+ARG BASE_VERSION="41"
+
+FROM ${BASE_IMAGE}:${BASE_VERSION}
 
 # Make sure that the rootfiles package can be installed
 RUN mkdir -p /var/roothome /data
@@ -42,4 +45,4 @@ RUN dnf install -y fedora-release-ostree-desktop
 RUN rm -rf /var/run && ln -s /run /var/
 
 # Final lint step to prevent easy-to-catch issues at build time
-RUN bootc container lint
+RUN [ -f /usr/bin/bootc ] && bootc container lint
