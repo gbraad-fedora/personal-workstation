@@ -1,9 +1,9 @@
-name: Build container image
+name: Build container image (bootc)
 on:
   workflow_dispatch:
 
 env:
-    IMAGE_NAME: fedora-workstation
+    IMAGE_NAME: fedora-workstation-bootc
     IMAGE_TAGS: latest ${{ github.sha }}
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
@@ -33,7 +33,7 @@ jobs:
         tags: ${{ env.IMAGE_TAGS }}
         oci: true
         build-args: |
-          BASE_IMAGE=ghcr.io/gbraad-devenv/fedora/systemd
+          BASE_IMAGE=ghcr.io/gbraad-devenv/fedora/systemd-bootc
           BASE_VERSION=41
         containerfiles: |
           ./containers/Containerfile
