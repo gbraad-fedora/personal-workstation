@@ -33,7 +33,7 @@ jobs:
         tags: ${{ env.IMAGE_TAGS }}
         oci: true
         build-args: |
-          BASE_IMAGE=quay.io/fedora/fedora-bootc
+          BASE_IMAGE=ghcr.io/gbraad-devenv/fedora/systemd-bootc
           BASE_VERSION=41
         containerfiles: |
           ./containers/Containerfile

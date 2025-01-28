@@ -6,7 +6,9 @@ FROM ${BASE_IMAGE}:${BASE_VERSION}
 USER root
 
 # Make sure that the rootfiles package can be installed
-RUN mkdir -p /var/roothome /data
+RUN mkdir -p /var/roothome /data \
+    && rrm -rf /run/systemd
+# Remove systemd run folder to prevent locate to start it's update service during install
 
 #install rpmfusion
 RUN dnf install -y \
