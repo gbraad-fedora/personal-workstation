@@ -3,6 +3,8 @@ ARG BASE_VERSION="41"
 
 FROM ${BASE_IMAGE}:${BASE_VERSION}
 
+USER root
+
 # Make sure that the rootfiles package can be installed
 RUN mkdir -p /var/roothome /data
 
